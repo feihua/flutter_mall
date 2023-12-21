@@ -1,16 +1,59 @@
 # flutter_mall
 
-A new Flutter project.
+android 版本体验地址[flutter-mall-app](https://www.pgyer.com/OoW2Zy)
 
-## Getting Started
+# 在p40下演示的截图
 
-This project is a starting point for a Flutter application.
+## 首页
 
-A few resources to get you started if this is your first Flutter project:
+![首页](./document/images/home.jpg)
+![首页](./document/images/home1.jpg)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 分类
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![分类](./document/images/category.jpg)
+
+## 购物车
+
+![购物车](./document/images/cart.jpg)
+
+## 确认订单
+
+![确认订单](./document/images/comfi_order.jpg)
+
+## 支付
+
+![支付](./document/images/pay.jpg)
+
+## 订单
+
+![订单](./document/images/order.jpg)
+
+## 我的
+
+![我的](./document/images/mine.jpg)
+
+## 登录
+
+![登录](./document/images/login.jpg)
+
+## 地址
+
+![地址](./document/images/address.jpg)
+
+## 品牌
+
+![品牌](./document/images/brand_list.jpg)
+![品牌](./document/images/brand_detail.jpg)
+
+## 商品详情
+
+![商品详情](./document/images/product_detail.jpg)
+
+## 优惠券
+
+![优惠券](./document/images/coupnon.jpg)
+
+## 设置
+
+![设置](./document/images/setting.jpg)
