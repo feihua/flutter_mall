@@ -36,6 +36,10 @@
 
 # 文档地址
 [https://feihua.github.io/](https://feihua.github.io/) 正在完善
+
+# 小程序版本
+[玖零商城](https://github.com/feihua/miniprogram)
+
 ## 快速开始
 
 1. 克隆项目代码到本地。

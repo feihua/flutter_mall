@@ -20,70 +20,42 @@ class CategoriesModel {
   });
 
   factory CategoriesModel.fromJson(Map<String, dynamic> json) => CategoriesModel(
-        code: json["code"],
-        message: json["message"],
-        data: List<CategoriesData>.from(json["data"].map((x) => CategoriesData.fromJson(x))),
-      );
+    code: json["code"],
+    message: json["message"],
+    data: List<CategoriesData>.from(json["data"].map((x) => CategoriesData.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "code": code,
-        "message": message,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
-      };
+    "code": code,
+    "message": message,
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  };
 }
 
 class CategoriesData {
   int id;
-  int parentId;
   String name;
-  int level;
-  int productCount;
-  String productUnit;
-  int navStatus;
-  int showStatus;
-  int sort;
-  String keywords;
-  String? icon;
+  String imageUrl;
+  List<CategoriesData>? children;
 
   CategoriesData({
     required this.id,
-    required this.parentId,
     required this.name,
-    required this.level,
-    required this.productCount,
-    required this.productUnit,
-    required this.navStatus,
-    required this.showStatus,
-    required this.sort,
-    required this.keywords,
-    this.icon,
+    required this.imageUrl,
+    required this.children,
   });
 
   factory CategoriesData.fromJson(Map<String, dynamic> json) => CategoriesData(
-        id: json["id"],
-        parentId: json["parentId"],
-        name: json["name"],
-        level: json["level"],
-        productCount: json["productCount"],
-        productUnit: json["productUnit"],
-        navStatus: json["navStatus"],
-        showStatus: json["showStatus"],
-        sort: json["sort"],
-        keywords: json["keywords"],
-        icon: json["icon"],
-      );
+    id: json["id"],
+    name: json["name"],
+    imageUrl: json["imageUrl"],
+    children: json["children"] == null ? [] : List<CategoriesData>.from(json["children"]!.map((x) => CategoriesData.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "parentId": parentId,
-        "name": name,
-        "level": level,
-        "productCount": productCount,
-        "productUnit": productUnit,
-        "navStatus": navStatus,
-        "showStatus": showStatus,
-        "sort": sort,
-        "keywords": keywords,
-        "icon": icon,
-      };
+    "id": id,
+    "name": name,
+    "imageUrl": imageUrl,
+    "children": children == null ? [] : List<dynamic>.from(children!.map((x) => x.toJson())),
+  };
 }
