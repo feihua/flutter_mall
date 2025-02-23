@@ -1,4 +1,4 @@
-import 'package:alipay_kit/alipay_kit.dart';
+// import 'package:alipay_kit/alipay_kit.dart';
 import 'package:flutter/material.dart';
 
 ///
@@ -68,15 +68,15 @@ class _PayTestState extends State<PayTest> {
   }
 
   void callPay() async {
-    final isInstall = await AlipayKitPlatform.instance.isInstalled();
-    if (!isInstall) {
-      print("未安装支付宝app");
-    } else {
-      // 此处是后台返回的支付信息
-      await AlipayKitPlatform.instance.pay(
-        orderInfo: payInfo,
-        dynamicLaunch: true,
-      );
-    }
+    // final isInstall = await AlipayKitPlatform.instance.isInstalled();
+    // if (!isInstall) {
+    //   print("未安装支付宝app");
+    // } else {
+    //   // 此处是后台返回的支付信息
+    //   await AlipayKitPlatform.instance.pay(
+    //     orderInfo: payInfo,
+    //     dynamicLaunch: true,
+    //   );
+    // }
   }
 }
