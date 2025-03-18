@@ -19,25 +19,31 @@ class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
-
 class _LoginState extends State<Login> {
+  //用户名文本控制器
   final TextEditingController _usernameController = TextEditingController();
+  //密码文本控制器
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    //初始化用户名和密码，便于测试
     _usernameController.text = "koobe";
     _passwordController.text = "123456";
   }
 
   //提交登录
   void _submitLoginData() async {
+    //创建一个映射，用于存储用户名和密码
     Map<String, dynamic> loginMap = <String, dynamic>{};
     loginMap["username"] = _usernameController.value.text;
     loginMap["password"] = _passwordController.value.text;
+    
+    //通过HTTP POST请求提交登录数据
     Response result = await HttpUtil.post(loginDataUrl, data: loginMap);
 
+    //将登录响应数据解析为LoginModel对象
     LoginModel loginModel = LoginModel.fromJson(result.data);
 
     //保存登录凭证token
@@ -85,6 +91,7 @@ class _LoginState extends State<Login> {
                   const SizedBox(height: 20),
                   InkWell(
                     onTap: () {
+                      //点击登录按钮时，提交登录数据并返回上一个页面
                       _submitLoginData();
                       Navigator.of(context).pop();
                     },
