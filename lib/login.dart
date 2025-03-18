@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
   void _submitLoginData() async {
     //创建一个映射，用于存储用户名和密码
     Map<String, dynamic> loginMap = <String, dynamic>{};
-    loginMap["username"] = _usernameController.value.text;
+    loginMap["account"] = _usernameController.value.text;
     loginMap["password"] = _passwordController.value.text;
     
     //通过HTTP POST请求提交登录数据
