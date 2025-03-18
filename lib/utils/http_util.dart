@@ -63,6 +63,18 @@ class HttpUtil {
         },
         onError: (DioException e, ErrorInterceptorHandler handler) {
           // 在错误之前做一些操作
+          if (kDebugMode) {
+            print("\n");
+            print("\n");
+            print("========================错误数据===================");
+            print("code=${e.response?.statusCode}");
+            print("message=${e.response?.statusMessage}");
+            print("data=${e.response?.data}");
+            print("==================================================");
+            print("\n");
+            print("\n");
+            print("\n");
+          }
           if (e.response?.statusCode == 401) {
             Navigator.of(NavKey.navKey.currentState!.context).push(
               MaterialPageRoute(
