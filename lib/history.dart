@@ -20,25 +20,35 @@ class History extends StatefulWidget {
   State<History> createState() => _HistoryState();
 }
 
+// 历史记录页面的状态类
 class _HistoryState extends State<History> {
+  // 初始化一个空的历史记录列表
   List<HistoryListDataItem> historyListDataItem = [];
 
+  // 初始化状态，调用父类的initState方法
   @override
   void initState() {
     super.initState();
+    // 在初始化时查询历史记录列表
     queryHistoryList();
   }
 
+  // 查询历史记录列表的方法
   void queryHistoryList() async {
+    // 发起获取历史记录列表的HTTP请求
     Response result = await HttpUtil.get(historyListDataUrl);
+    // 将请求结果转换为历史记录模型对象
     HistoryListModel historyListModel = HistoryListModel.fromJson(result.data);
+    // 更新状态，设置历史记录列表数据
     setState(() {
       historyListDataItem = historyListModel.data;
     });
   }
 
+  // 构建历史记录页面的UI
   @override
   Widget build(BuildContext context) {
+    // 返回一个带有AppBar和历史记录列表的Scaffold
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -60,6 +70,7 @@ class _HistoryState extends State<History> {
                       HistoryListDataItem item = historyListDataItem[index];
                       return InkWell(
                           onTap: () {
+                            // 点击历史记录项时，导航到产品详情页面
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ProductDetail(productId: historyListDataItem[index].productId),
