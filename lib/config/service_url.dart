@@ -13,7 +13,7 @@ const homeDataUrl = "$baseUrl/api/home/index";
 // 品牌列表
 const brandListDataUrl = "$baseUrl/api/brand/queryBrandList";
 // 品牌详情
-const brandDetailDataUrl = "$baseUrl/api/brand/detail/";
+const brandDetailDataUrl = "$baseUrl/api/brand/queryBrandProductList/";
 // 分类
 const categoriesDataUrl = "$baseUrl/api/category/queryProductCateList/";
 // 购物车
@@ -27,19 +27,19 @@ const productDetailDataUrl = "$baseUrl/api/product/queryProduct/";
 // 通知消息
 const messageListDataUrl = "$baseUrl/api/member/message/list/";
 // 优惠券
-const couponDataUrl = "$baseUrl/api/member/coupon/list/";
+const couponDataUrl = "$baseUrl/api/member/coupon/queryCouponList/";
 // 订单列表
 const orderListDataUrl = "$baseUrl/api/order/orderList/";
 // 订单详情
 const orderDetailDataUrl = "$baseUrl/api/order/orderDetail/";
 // 收货地址列表
-const addressListDataUrl = "$baseUrl/api/member/address/list";
+const addressListDataUrl = "$baseUrl/api/member/address/queryMemberAddressList";
 // 我的足迹
-const historyListDataUrl = "$baseUrl/api/history/list";
+const historyListDataUrl = "$baseUrl/api/history/queryReadHistoryList";
 // 我的收藏
-const collectionListDataUrl = "$baseUrl/api/collection/list";
+const collectionListDataUrl = "$baseUrl/api/collection/queryProductCollectionList";
 // 我的关注
-const focusOnListDataUrl = "$baseUrl/api/member/attention/list";
+const focusOnListDataUrl = "$baseUrl/api/member/attention/queryAttentionList";
 // 登录
 const loginDataUrl = "$baseUrl/api/member/login";
 // 获取用户信息
