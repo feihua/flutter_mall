@@ -13,17 +13,17 @@ const homeDataUrl = "$baseUrl/api/home/index";
 // 品牌列表
 const brandListDataUrl = "$baseUrl/api/brand/queryBrandList";
 // 品牌详情
-const brandDetailDataUrl = "$baseUrl/api/brand/queryBrandProductList/";
+const brandDetailDataUrl = "$baseUrl/api/brand/queryBrandProductList?brandId=";
 // 分类
-const categoriesDataUrl = "$baseUrl/api/category/queryProductCateList/";
+const categoriesDataUrl = "$baseUrl/api/category/queryProductCateTreeList";
 // 购物车
 const cartDataUrl = "$baseUrl/api/cart/queryCartList";
 // 添加商品进购物车
 const cartAddUrl = "$baseUrl/api/cart/addCart";
 // 商品列表
-const productListDataUrl = "$baseUrl/api/product/queryProductList/";
+const productListDataUrl = "$baseUrl/api/product/queryProductList?productCategoryId=";
 // 商品详情
-const productDetailDataUrl = "$baseUrl/api/product/queryProduct/";
+const productDetailDataUrl = "$baseUrl/api/product/queryProduct?productId=";
 // 通知消息
 const messageListDataUrl = "$baseUrl/api/member/message/list/";
 // 优惠券
@@ -34,6 +34,8 @@ const orderListDataUrl = "$baseUrl/api/order/orderList/";
 const orderDetailDataUrl = "$baseUrl/api/order/orderDetail/";
 // 收货地址列表
 const addressListDataUrl = "$baseUrl/api/member/address/queryMemberAddressList";
+// 添加会员地址
+const addAddressDataUrl = "$baseUrl/api/member/address/addMemberAddress ";
 // 我的足迹
 const historyListDataUrl = "$baseUrl/api/history/queryReadHistoryList";
 // 我的收藏
