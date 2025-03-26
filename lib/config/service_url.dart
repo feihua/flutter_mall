@@ -17,9 +17,9 @@ const brandDetailDataUrl = "$baseUrl/api/brand/queryBrandProductList/";
 // 分类
 const categoriesDataUrl = "$baseUrl/api/category/queryProductCateList/";
 // 购物车
-const cartDataUrl = "$baseUrl/api/cart/list";
+const cartDataUrl = "$baseUrl/api/cart/queryCartList";
 // 添加商品进购物车
-const cartAddUrl = "$baseUrl/api/cart/add";
+const cartAddUrl = "$baseUrl/api/cart/addCart";
 // 商品列表
 const productListDataUrl = "$baseUrl/api/product/queryProductList/";
 // 商品详情
