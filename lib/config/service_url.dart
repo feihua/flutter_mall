@@ -27,7 +27,7 @@ const productDetailDataUrl = "$baseUrl/api/product/queryProduct?productId=";
 // 通知消息
 const messageListDataUrl = "$baseUrl/api/member/message/list/";
 // 优惠券
-const couponDataUrl = "$baseUrl/api/member/coupon/queryCouponList/";
+const couponDataUrl = "$baseUrl/api/member/coupon/queryCouponList?useStatus=";
 // 订单列表
 const orderListDataUrl = "$baseUrl/api/order/orderList/";
 // 订单详情

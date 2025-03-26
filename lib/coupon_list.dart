@@ -26,7 +26,7 @@ class _CouponListState extends State<CouponList> {
   @override
   void initState() {
     super.initState();
-    queryCouponList("1");
+    queryCouponList("0");
   }
 
   void queryCouponList(String status) async {
