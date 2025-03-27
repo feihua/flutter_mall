@@ -33,7 +33,7 @@ class _OrderListState extends State<OrderList> {
 
   void _queryOrderListData() async {
     // todo 订单状态待完善
-    Response result = await HttpUtil.get("${orderListDataUrl}1");
+    Response result = await HttpUtil.get("${orderListDataUrl}6");
     setState(() {
       OrderListModel orderListModel = OrderListModel.fromJson(result.data);
       orderListData = orderListModel.data;
