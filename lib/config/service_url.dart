@@ -29,9 +29,9 @@ const messageListDataUrl = "$baseUrl/api/member/message/list/";
 // 优惠券
 const couponDataUrl = "$baseUrl/api/member/coupon/queryCouponList?useStatus=";
 // 订单列表
-const orderListDataUrl = "$baseUrl/api/order/orderList/";
+const orderListDataUrl = "$baseUrl/api/order/orderList?status=";
 // 订单详情
-const orderDetailDataUrl = "$baseUrl/api/order/orderDetail/";
+const orderDetailDataUrl = "$baseUrl/api/order/orderDetail?orderId=";
 // 收货地址列表
 const addressListDataUrl = "$baseUrl/api/member/address/queryMemberAddressList";
 // 添加会员地址

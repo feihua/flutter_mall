@@ -32,7 +32,8 @@ class _OrderListState extends State<OrderList> {
   }
 
   void _queryOrderListData() async {
-    Response result = await HttpUtil.get("${orderListDataUrl}0/1");
+    // todo 订单状态待完善
+    Response result = await HttpUtil.get("${orderListDataUrl}1");
     setState(() {
       OrderListModel orderListModel = OrderListModel.fromJson(result.data);
       orderListData = orderListModel.data;
@@ -49,18 +50,21 @@ class _OrderListState extends State<OrderList> {
           titleTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
           centerTitle: true,
           bottom: TabBar(
-            indicatorColor: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+            indicatorColor: Color(
+              int.parse('fa436a', radix: 16),
+            ).withAlpha(255),
             labelColor: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
             tabs: orderStatus.map((status) => Tab(text: status)).toList(),
           ),
         ),
         body: TabBarView(
-          children: orderStatus.map((status) {
-            return OrderListInfo(
-              status: status,
-              orderListData: orderListData,
-            );
-          }).toList(),
+          children:
+              orderStatus.map((status) {
+                return OrderListInfo(
+                  status: status,
+                  orderListData: orderListData,
+                );
+              }).toList(),
         ),
       ),
     );
@@ -79,35 +83,45 @@ class OrderListInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var border = BorderSide(width: 1, color: Color(int.parse('f5f5f5', radix: 16)).withAlpha(255));
+    var border = BorderSide(
+      width: 1,
+      color: Color(int.parse('f5f5f5', radix: 16)).withAlpha(255),
+    );
     var boxDecoration = BoxDecoration(border: Border(bottom: border));
     return ListView.builder(
-        itemCount: orderListData.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => OrderDetail(
-                    orderId: orderListData[index].id,
-                  ),
+      itemCount: orderListData.length,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder:
+                    (context) => OrderDetail(orderId: orderListData[index].id),
+              ),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.only(left: 15),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  width: 5,
+                  color: Color(int.parse('f5f5f5', radix: 16)).withAlpha(255),
                 ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.only(left: 15),
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(width: 5, color: Color(int.parse('f5f5f5', radix: 16)).withAlpha(255)))),
-              child: Column(children: [
+              ),
+            ),
+            child: Column(
+              children: [
                 buildCreateTime(boxDecoration, index),
                 buildProductList(index),
                 buildAmount(boxDecoration, index),
-                buildOrderOperate(index)
-              ]),
+                buildOrderOperate(index),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   // 构建订单操作
@@ -125,45 +139,74 @@ class OrderListInfo extends StatelessWidget {
             child: TextButton(
               onPressed: () {},
               // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white12)),
-              child: Text("取消订单",
-                  style: TextStyle(fontSize: 14, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
+              child: Text(
+                "取消订单",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(int.parse('303133', radix: 16)).withAlpha(255),
+                ),
+              ),
             ),
           ),
           Visibility(
-              visible: status == 2,
-              child: TextButton(
-                onPressed: () {},
-                // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white12)),
-                child: Text("查看物流",
-                    style: TextStyle(fontSize: 14, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
-              )),
+            visible: status == 2,
+            child: TextButton(
+              onPressed: () {},
+              // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white12)),
+              child: Text(
+                "查看物流",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(int.parse('303133', radix: 16)).withAlpha(255),
+                ),
+              ),
+            ),
+          ),
           Visibility(
-              visible: status == 0,
-              child: TextButton(
-                onPressed: () {},
-                // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white12)),
-                child: Text("立即付款",
-                    style: TextStyle(fontSize: 14, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
-              )),
+            visible: status == 0,
+            child: TextButton(
+              onPressed: () {},
+              // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white12)),
+              child: Text(
+                "立即付款",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+                ),
+              ),
+            ),
+          ),
           // const SizedBox(
           //   width: 5,
           // ),
           Visibility(
-              visible: status == 2,
-              child: TextButton(
-                onPressed: () {},
-                // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(int.parse('f7bcc8', radix: 16)).withAlpha(255))),
-                child: Text("确认收货",
-                    style: TextStyle(fontSize: 14, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
-              )),
+            visible: status == 2,
+            child: TextButton(
+              onPressed: () {},
+              // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(int.parse('f7bcc8', radix: 16)).withAlpha(255))),
+              child: Text(
+                "确认收货",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+                ),
+              ),
+            ),
+          ),
           Visibility(
-              visible: status == 3,
-              child: TextButton(
-                onPressed: () {},
-                // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(int.parse('f7bcc8', radix: 16)).withAlpha(255))),
-                child: Text("评价商品",
-                    style: TextStyle(fontSize: 14, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
-              )),
+            visible: status == 3,
+            child: TextButton(
+              onPressed: () {},
+              // style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(int.parse('f7bcc8', radix: 16)).withAlpha(255))),
+              child: Text(
+                "评价商品",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -179,13 +222,41 @@ class OrderListInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text("共", style: TextStyle(fontSize: 13, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
-          Text(orderListData[index].orderItemList.length.toString(),
-              style: TextStyle(fontSize: 13, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
-          Text("件商品 实付款", style: TextStyle(fontSize: 13, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
-          Text(" ￥", style: TextStyle(fontSize: 12, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
-          Text(orderListData[index].payAmount.toString(),
-              style: TextStyle(fontSize: 16, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
+          Text(
+            "共",
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(int.parse('707070', radix: 16)).withAlpha(255),
+            ),
+          ),
+          Text(
+            orderListData[index].orderItemList.length.toString(),
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(int.parse('303133', radix: 16)).withAlpha(255),
+            ),
+          ),
+          Text(
+            "件商品 实付款",
+            style: TextStyle(
+              fontSize: 13,
+              color: Color(int.parse('707070', radix: 16)).withAlpha(255),
+            ),
+          ),
+          Text(
+            " ￥",
+            style: TextStyle(
+              fontSize: 12,
+              color: Color(int.parse('707070', radix: 16)).withAlpha(255),
+            ),
+          ),
+          Text(
+            orderListData[index].payAmount.toString(),
+            style: TextStyle(
+              fontSize: 16,
+              color: Color(int.parse('303133', radix: 16)).withAlpha(255),
+            ),
+          ),
         ],
       ),
     );
@@ -194,49 +265,74 @@ class OrderListInfo extends StatelessWidget {
   // 构建商品列表
   Column buildProductList(int index) {
     return Column(
-      children: orderListData[index].orderItemList.map((item) {
-        return Container(
-          padding: const EdgeInsets.only(right: 15, top: 15),
-          // decoration: boxDecoration,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CachedImageWidget(
-                60,
-                60,
-                item.productPic,
-                fit: BoxFit.contain,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(item.productName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 15, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
-                    Text("颜色:黑色;容量:128G; x 1",
-                        style: TextStyle(fontSize: 13, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
-                    Row(
+      children:
+          orderListData[index].orderItemList.map((item) {
+            return Container(
+              padding: const EdgeInsets.only(right: 15, top: 15),
+              // decoration: boxDecoration,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CachedImageWidget(
+                    60,
+                    60,
+                    item.productPic,
+                    fit: BoxFit.contain,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("￥",
-                            style:
-                                TextStyle(fontSize: 12, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
-                        Text(item.productPrice.toString(),
-                            style:
-                                TextStyle(fontSize: 15, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
+                        Text(
+                          item.productName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Color(
+                              int.parse('303133', radix: 16),
+                            ).withAlpha(255),
+                          ),
+                        ),
+                        Text(
+                          "颜色:黑色;容量:128G; x 1",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Color(
+                              int.parse('707070', radix: 16),
+                            ).withAlpha(255),
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "￥",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Color(
+                                  int.parse('707070', radix: 16),
+                                ).withAlpha(255),
+                              ),
+                            ),
+                            Text(
+                              item.productPrice.toString(),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Color(
+                                  int.parse('303133', radix: 16),
+                                ).withAlpha(255),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
+            );
+          }).toList(),
     );
   }
 
@@ -250,21 +346,28 @@ class OrderListInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: Text(orderListData[index].createTime.toString(),
-                style: TextStyle(fontSize: 14, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
+            child: Text(
+              orderListData[index].createTime.toString(),
+              style: TextStyle(
+                fontSize: 14,
+                color: Color(int.parse('303133', radix: 16)).withAlpha(255),
+              ),
+            ),
           ),
-          Text(getOrderStatus(orderListData[index].status),
-              style: TextStyle(fontSize: 14, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
+          Text(
+            getOrderStatus(orderListData[index].status),
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+            ),
+          ),
           Visibility(
-              visible: getDeleteStatus(orderListData[index].status),
-              child: Container(
-                margin: const EdgeInsets.only(left: 10),
-                child: Image.asset(
-                  "images/delete.png",
-                  height: 17,
-                  width: 16,
-                ),
-              ))
+            visible: getDeleteStatus(orderListData[index].status),
+            child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              child: Image.asset("images/delete.png", height: 17, width: 16),
+            ),
+          ),
         ],
       ),
     );
