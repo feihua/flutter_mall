@@ -470,7 +470,7 @@ class _HomeState extends State<Home> {
                     CachedImageWidget(
                       165,
                       165,
-                      flashProductList[index].pic,
+                      flashProductList[index].mainPic,
                       fit: BoxFit.contain,
                     ),
                     const SizedBox(
@@ -592,7 +592,7 @@ class _HomeState extends State<Home> {
                         CachedImageWidget(
                           150,
                           150,
-                          newProductList[index].pic,
+                          newProductList[index].mainPic,
                           fit: BoxFit.contain,
                         ),
                         const SizedBox(
@@ -713,7 +713,7 @@ class _HomeState extends State<Home> {
                     CachedImageWidget(
                       103,
                       125,
-                      hotProductList[index].pic,
+                      hotProductList[index].mainPic,
                       fit: BoxFit.fill,
                     ),
                     const SizedBox(
@@ -830,7 +830,7 @@ class _HomeState extends State<Home> {
                     CachedImageWidget(
                       165,
                       165,
-                      hotProductList[index].pic,
+                      hotProductList[index].mainPic,
                       fit: BoxFit.fill,
                     ),
                     const SizedBox(
