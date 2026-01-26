@@ -33,7 +33,7 @@ class _OrderListState extends State<OrderList> {
 
   void _queryOrderListData() async {
     // todo 订单状态待完善
-    Response result = await HttpUtil.get("${orderListDataUrl}6");
+    Response result = await HttpUtil.get("${orderListDataUrl}1");
     setState(() {
       OrderListModel orderListModel = OrderListModel.fromJson(result.data);
       orderListData = orderListModel.data;
@@ -126,7 +126,7 @@ class OrderListInfo extends StatelessWidget {
 
   // 构建订单操作
   Container buildOrderOperate(int index) {
-    int status = orderListData[index].status;
+    int status = orderListData[index].orderStatus;
     return Container(
       padding: const EdgeInsets.only(right: 5),
       height: 40,
@@ -230,7 +230,7 @@ class OrderListInfo extends StatelessWidget {
             ),
           ),
           Text(
-            orderListData[index].orderItemList.length.toString(),
+            orderListData[index].orderItemData.length.toString(),
             style: TextStyle(
               fontSize: 13,
               color: Color(int.parse('303133', radix: 16)).withAlpha(255),
@@ -266,7 +266,7 @@ class OrderListInfo extends StatelessWidget {
   Column buildProductList(int index) {
     return Column(
       children:
-          orderListData[index].orderItemList.map((item) {
+          orderListData[index].orderItemData.map((item) {
             return Container(
               padding: const EdgeInsets.only(right: 15, top: 15),
               // decoration: boxDecoration,
@@ -276,7 +276,7 @@ class OrderListInfo extends StatelessWidget {
                   CachedImageWidget(
                     60,
                     60,
-                    item.productPic,
+                    item.skuPic,
                     fit: BoxFit.contain,
                   ),
                   const SizedBox(width: 10),
@@ -285,7 +285,7 @@ class OrderListInfo extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          item.productName,
+                          item.skuName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -316,7 +316,7 @@ class OrderListInfo extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              item.productPrice.toString(),
+                              item.skuPrice.toString(),
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Color(
@@ -355,14 +355,14 @@ class OrderListInfo extends StatelessWidget {
             ),
           ),
           Text(
-            getOrderStatus(orderListData[index].status),
+            getOrderStatus(orderListData[index].orderStatus),
             style: TextStyle(
               fontSize: 14,
               color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
             ),
           ),
           Visibility(
-            visible: getDeleteStatus(orderListData[index].status),
+            visible: getDeleteStatus(orderListData[index].orderStatus),
             child: Container(
               margin: const EdgeInsets.only(left: 10),
               child: Image.asset("images/delete.png", height: 17, width: 16),

@@ -26,6 +26,7 @@ class OrderDetail extends StatefulWidget {
 
 class _OrderDetailState extends State<OrderDetail> {
   OrderDetailData? orderDetailData;
+  MemberReceiveAddress? receiveAddress;
 
   List<OrderItemList> orderItemList = [];
 
@@ -40,7 +41,8 @@ class _OrderDetailState extends State<OrderDetail> {
     OrderDetailModel orderDetailModel = OrderDetailModel.fromJson(result.data);
     setState(() {
       orderDetailData = orderDetailModel.data;
-      orderItemList = orderDetailModel.data.orderItemList;
+      orderItemList = orderDetailModel.data.orderItemData;
+      receiveAddress = orderDetailModel.data.memberReceiveAddress;
     });
   }
 
@@ -95,7 +97,7 @@ class _OrderDetailState extends State<OrderDetail> {
             child: Row(
               children: [
                 Image.asset(
-                  getStatusIcon(orderDetailData!.status),
+                  getStatusIcon(orderDetailData!.orderStatus),
                   height: 24,
                   width: 24,
                   color: Colors.white,
@@ -103,7 +105,7 @@ class _OrderDetailState extends State<OrderDetail> {
                 const SizedBox(
                   width: 10,
                 ),
-                Text(getOrderStatusTxt(orderDetailData!.status),
+                Text(getOrderStatusTxt(orderDetailData!.orderStatus),
                     style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold)),
               ],
             ),
@@ -141,13 +143,13 @@ class _OrderDetailState extends State<OrderDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("${orderDetailData!.receiverName} ${orderDetailData!.receiverPhone}",
+                      Text("${receiveAddress!.receiverName} ${receiveAddress!.receiverPhone}",
                           style: TextStyle(fontSize: 17, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
                       const SizedBox(
                         height: 5,
                       ),
                       Text(
-                          "${orderDetailData!.receiverProvince} ${orderDetailData!.receiverCity} ${orderDetailData!.receiverRegion} ${orderDetailData!.receiverDetailAddress}",
+                          "${receiveAddress!.province} ${receiveAddress!.city} ${receiveAddress!.district} ${receiveAddress!.detailAddress}",
                           style: TextStyle(fontSize: 14, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
                     ],
                   ),
@@ -192,7 +194,7 @@ class _OrderDetailState extends State<OrderDetail> {
                 CachedImageWidget(
                   70,
                   70,
-                  orderItemList[index].productPic,
+                  orderItemList[index].skuPic,
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(
@@ -202,20 +204,20 @@ class _OrderDetailState extends State<OrderDetail> {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(orderItemList[index].productName,
+                    Text(orderItemList[index].skuName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 15, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
                     const SizedBox(
                       height: 6,
                     ),
-                    Text(orderItemList[index].productAttr,
+                    Text(orderItemList[index].specData,
                         maxLines: 1,
                         style: TextStyle(fontSize: 13, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
                     const SizedBox(
                       height: 6,
                     ),
-                    Text("￥${orderItemList[index].productPrice}x1",
+                    Text("￥${orderItemList[index].skuPrice}x1",
                         style: TextStyle(fontSize: 16, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
                   ],
                 ))
@@ -392,7 +394,7 @@ class _OrderDetailState extends State<OrderDetail> {
                           child: Text("积分抵扣",
                               style: TextStyle(
                                   fontSize: 13, color: Color(int.parse('909399', radix: 16)).withAlpha(255)))),
-                      Text("-￥${orderDetailData!.integrationAmount}",
+                      Text("-￥${orderDetailData!.pointsAmount}",
                           style: TextStyle(fontSize: 13, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
                     ],
                   ),
@@ -440,11 +442,11 @@ class _OrderDetailState extends State<OrderDetail> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
-                buildTxt("订单编号", orderDetailData!.orderSn),
+                buildTxt("订单编号", orderDetailData!.orderNo),
                 buildTxt("提交时间", orderDetailData!.createTime.toString()),
                 buildTxt("支付方式", getPayType(orderDetailData!.payType)),
                 buildTxt("实付金额", "￥${orderDetailData!.payAmount}"),
-                buildTxt("付款时间", orderDetailData!.paymentTime.toString()),
+                buildTxt("付款时间", orderDetailData!.payTime.toString()),
                 const SizedBox(
                   height: 45,
                 ),
@@ -480,7 +482,7 @@ class _OrderDetailState extends State<OrderDetail> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Visibility(
-              visible: orderDetailData!.status == 0,
+              visible: orderDetailData!.orderStatus == 0,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -505,7 +507,7 @@ class _OrderDetailState extends State<OrderDetail> {
               )),
           // const SizedBox(width: 10,),
           Visibility(
-              visible: orderDetailData!.status == 0,
+              visible: orderDetailData!.orderStatus == 0,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -530,7 +532,7 @@ class _OrderDetailState extends State<OrderDetail> {
                 ),
               )),
           Visibility(
-              visible: orderDetailData!.status == 2,
+              visible: orderDetailData!.orderStatus == 2,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -555,7 +557,7 @@ class _OrderDetailState extends State<OrderDetail> {
               )),
           // const SizedBox(width: 10,),
           Visibility(
-              visible: orderDetailData!.status == 2,
+              visible: orderDetailData!.orderStatus == 2,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -580,7 +582,7 @@ class _OrderDetailState extends State<OrderDetail> {
                 ),
               )),
           Visibility(
-              visible: orderDetailData!.status == 3,
+              visible: orderDetailData!.orderStatus == 3,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -605,7 +607,7 @@ class _OrderDetailState extends State<OrderDetail> {
               )),
           // const SizedBox(width: 10,),
           Visibility(
-              visible: orderDetailData!.status == 3,
+              visible: orderDetailData!.orderStatus == 3,
               child: InkWell(
                 onTap: () {
                   // Navigator.of(context).push(

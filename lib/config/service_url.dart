@@ -17,9 +17,9 @@ const brandDetailDataUrl = "$baseUrl/api/product/queryBrandDetail?brandId=";
 // 分类
 const categoriesDataUrl = "$baseUrl/api/product/queryProductCateList";
 // 购物车
-const cartDataUrl = "$baseUrl/api/cart/queryCartList";
+const cartDataUrl = "$baseUrl/api/order/queryCarItemList";
 // 添加商品进购物车
-const cartAddUrl = "$baseUrl/api/cart/addCart";
+const cartAddUrl = "$baseUrl/api/order/addCart";
 // 商品列表
 const productListDataUrl = "$baseUrl/api/product/queryProductList?productCategoryId=";
 // 商品详情
@@ -37,11 +37,11 @@ const addressListDataUrl = "$baseUrl/api/member/queryAddressList";
 // 添加会员地址
 const addAddressDataUrl = "$baseUrl/api/member/addAddress ";
 // 我的足迹
-const historyListDataUrl = "$baseUrl/api/history/queryReadHistoryList";
+const historyListDataUrl = "$baseUrl/api/member/queryReadHistoryList";
 // 我的收藏
-const collectionListDataUrl = "$baseUrl/api/collection/queryCollectionList";
+const collectionListDataUrl = "$baseUrl/api/member/queryCollectionList";
 // 我的关注
-const focusOnListDataUrl = "$baseUrl/api/member/attention/queryAttentionList";
+const focusOnListDataUrl = "$baseUrl/api/member/queryAttentionList";
 // 登录
 const loginDataUrl = "$baseUrl/api/member/login";
 // 获取用户信息

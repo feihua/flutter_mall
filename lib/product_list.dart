@@ -74,7 +74,7 @@ class _ProductListState extends State<ProductList> {
                               CachedImageWidget(
                                 165,
                                 165,
-                                productDataItem[index].pic,
+                                productDataItem[index].mainPic,
                                 fit: BoxFit.fill,
                               ),
                               const SizedBox(
@@ -102,7 +102,7 @@ class _ProductListState extends State<ProductList> {
                                         style: TextStyle(
                                             fontSize: 16, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
                                   ),
-                                  Text("已售 ${productDataItem[index].sale}",
+                                  Text("已售 ${productDataItem[index].sales}",
                                       style: TextStyle(
                                           fontSize: 12, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
                                 ],

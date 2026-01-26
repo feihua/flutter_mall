@@ -96,7 +96,7 @@ class _ProductDetailState extends State<ProductDetail> {
       list = product!.albumPics.split(",");
       //如果画册图片为空,则区主图
       if (list[0] == "") {
-        list[0] = product!.pic;
+        list[0] = product!.mainPic;
       }
     }
 
@@ -137,7 +137,7 @@ class _ProductDetailState extends State<ProductDetail> {
             child: Row(
               children: [
                 Text("¥", style: TextStyle(fontSize: 15, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
-                Text(product!.promotionPrice.toString(),
+                Text(product!.price.toString(),
                     style: TextStyle(fontSize: 17, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
               ],
             ),
@@ -145,7 +145,7 @@ class _ProductDetailState extends State<ProductDetail> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("销量: ${product!.sale}",
+              Text("销量: ${product!.sales}",
                   style: TextStyle(fontSize: 14, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
               Text("库存: ${product!.stock}",
                   style: TextStyle(fontSize: 14, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
@@ -761,14 +761,15 @@ class _ProductDetailState extends State<ProductDetail> {
     addCartParams["productId"] = product.id;
     addCartParams["productSkuId"] = 221;
     addCartParams["quantity"] = 1;
-    addCartParams["price"] = product.price;
-    addCartParams["productPic"] = product.pic;
+    addCartParams["price"] = double.parse(product.price);
+    addCartParams["productPic"] = product.mainPic;
     addCartParams["productName"] = product.name;
     addCartParams["productSubTitle"] = product.subTitle;
     addCartParams["productSkuCode"] = "202211040040001";
-    addCartParams["productCategoryId"] = product.productCategoryId;
+    addCartParams["productCategoryId"] = product.categoryId;
     addCartParams["productBrand"] = product.brandName;
     addCartParams["productSn"] = product.productSn;
+    addCartParams["memberNickname"] = "test";
     addCartParams["productAttr"] = "[{\"key\":\"颜色\",\"value\":\"黑色\"},{\"key\":\"容量\",\"value\":\"128G\"}]";
     Response result = await HttpUtil.post(cartAddUrl, data: addCartParams);
 
