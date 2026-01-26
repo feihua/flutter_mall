@@ -41,7 +41,10 @@ class _AddressListState extends State<AddressList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const Text("收货地址", style: TextStyle(fontSize: 16, color: Colors.black)),
+        title: const Text(
+          "收货地址",
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
         centerTitle: true,
       ),
       body: Container(
@@ -49,92 +52,115 @@ class _AddressListState extends State<AddressList> {
         child: Column(
           children: [
             Expanded(
-                child: ListView.builder(
-                    itemCount: addressListData.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      AddressListData data = addressListData[index];
-                      var boxDecoration = BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
-                          ),
-                          borderRadius: const BorderRadius.all(Radius.circular(2)));
-                      return Container(
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            border: Border(
-                                top:
-                                    BorderSide(width: 1, color: Color(int.parse('f5f5f5', radix: 16)).withAlpha(255)))),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView.builder(
+                itemCount: addressListData.length,
+                itemBuilder: (BuildContext context, int index) {
+                  AddressListData data = addressListData[index];
+                  var boxDecoration = BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: Color(
+                        int.parse('fa436a', radix: 16),
+                      ).withAlpha(255),
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(2)),
+                  );
+                  return Container(
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                          width: 1,
+                          color: Color(
+                            int.parse('f5f5f5', radix: 16),
+                          ).withAlpha(255),
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      Visibility(
-                                        visible: data.defaultStatus == 1,
-                                        child: Container(
-                                          margin: const EdgeInsets.only(right: 3),
-                                          decoration: boxDecoration,
-                                          child: Text("默认",
-                                              style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
+                                  Visibility(
+                                    visible: data.isDefault == 1,
+                                    child: Container(
+                                      margin: const EdgeInsets.only(right: 3),
+                                      decoration: boxDecoration,
+                                      child: Text(
+                                        "默认",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(
+                                            int.parse('fa436a', radix: 16),
+                                          ).withAlpha(255),
                                         ),
                                       ),
-                                      Text("${data.province} ${data.city} ${data.region} ${data.detailAddress}",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
-                                    ],
+                                    ),
                                   ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("${data.name} ${data.phoneNumber}",
+                                  Expanded(
+                                    child: Text(
+                                      "${data.province} ${data.city} ${data.district} ${data.detailAddress}",
                                       style: TextStyle(
-                                          fontSize: 14, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
+                                        fontSize: 15,
+                                        color: Color(
+                                          int.parse('303133', radix: 16),
+                                        ).withAlpha(255),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
-                            ),
-                            Row(
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => const AddressAdd(),
-                                      ),
-                                    );
-                                  },
-                                  child: Image.asset(
-                                    "images/edit.png",
-                                    height: 20,
-                                    width: 22,
+                              const SizedBox(height: 10),
+                              Text(
+                                "${data.receiverName} ${data.receiverPhone}",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Color(
+                                    int.parse('909399', radix: 16),
+                                  ).withAlpha(255),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const AddressAdd(),
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                Image.asset(
-                                  "images/delete.png",
-                                  height: 20,
-                                  width: 22,
-                                )
-                              ],
-                            )
+                                );
+                              },
+                              child: Image.asset(
+                                "images/edit.png",
+                                height: 20,
+                                width: 22,
+                              ),
+                            ),
+                            const SizedBox(width: 15),
+                            Image.asset(
+                              "images/delete.png",
+                              height: 20,
+                              width: 22,
+                            ),
                           ],
                         ),
-                      );
-                    })),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
             InkWell(
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const AddressAdd(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const AddressAdd()),
                 );
               },
               child: Container(
