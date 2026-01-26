@@ -11,9 +11,9 @@ const baseUrl = "http://10.168.96.23:9999";
 // 首页
 const homeDataUrl = "$baseUrl/api/home/index";
 // 品牌列表
-const brandListDataUrl = "$baseUrl/api/brand/queryBrandList";
+const brandListDataUrl = "$baseUrl/api/product/queryBrandList";
 // 品牌详情
-const brandDetailDataUrl = "$baseUrl/api/brand/queryBrandProductList?brandId=";
+const brandDetailDataUrl = "$baseUrl/api/product/queryBrandDetail?brandId=";
 // 分类
 const categoriesDataUrl = "$baseUrl/api/product/queryProductCateList";
 // 购物车

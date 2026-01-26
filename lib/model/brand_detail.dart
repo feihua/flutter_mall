@@ -11,7 +11,7 @@ String brandDetailModelToJson(BrandDetailModel data) => json.encode(data.toJson(
 class BrandDetailModel {
   int code;
   String message;
-  BrandDetailData data;
+  Data data;
 
   BrandDetailModel({
     required this.code,
@@ -20,238 +20,218 @@ class BrandDetailModel {
   });
 
   factory BrandDetailModel.fromJson(Map<String, dynamic> json) => BrandDetailModel(
-        code: json["code"],
-        message: json["message"],
-        data: BrandDetailData.fromJson(json["data"]),
-      );
+    code: json["code"],
+    message: json["message"],
+    data: Data.fromJson(json["data"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "code": code,
-        "message": message,
-        "data": data.toJson(),
-      };
+    "code": code,
+    "message": message,
+    "data": data.toJson(),
+  };
 }
 
-class BrandDetailData {
+class Data {
+  BrandData brandData;
+  List<BrandProductData> brandProductData;
+
+  Data({
+    required this.brandData,
+    required this.brandProductData,
+  });
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+    brandData: BrandData.fromJson(json["brandData"]),
+    brandProductData: List<BrandProductData>.from(json["brandProductData"].map((x) => BrandProductData.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "brandData": brandData.toJson(),
+    "brandProductData": List<dynamic>.from(brandProductData.map((x) => x.toJson())),
+  };
+}
+
+class BrandData {
   int id;
   String name;
-  String firstLetter;
-  int sort;
-  int factoryStatus;
-  int showStatus;
-  int productCount;
-  int productCommentCount;
   String logo;
   String bigPic;
-  String brandStory;
-  List<ProductList>? productList;
+  String description;
+  String firstLetter;
+  int sort;
+  int recommendStatus;
+  int productCount;
+  int productCommentCount;
 
-  BrandDetailData({
+  BrandData({
     required this.id,
     required this.name,
-    required this.firstLetter,
-    required this.sort,
-    required this.factoryStatus,
-    required this.showStatus,
-    required this.productCount,
-    required this.productCommentCount,
     required this.logo,
     required this.bigPic,
-    required this.brandStory,
-    this.productList,
+    required this.description,
+    required this.firstLetter,
+    required this.sort,
+    required this.recommendStatus,
+    required this.productCount,
+    required this.productCommentCount,
   });
 
-  factory BrandDetailData.fromJson(Map<String, dynamic> json) => BrandDetailData(
-        id: json["id"],
-        name: json["name"],
-        firstLetter: json["firstLetter"],
-        sort: json["sort"],
-        factoryStatus: json["factoryStatus"],
-        showStatus: json["showStatus"],
-        productCount: json["productCount"],
-        productCommentCount: json["productCommentCount"],
-        logo: json["logo"],
-        bigPic: json["bigPic"],
-        brandStory: json["brandStory"],
-        productList: List<ProductList>.from(json["productList"]?.map((x) => ProductList.fromJson(x))),
-      );
+  factory BrandData.fromJson(Map<String, dynamic> json) => BrandData(
+    id: json["id"],
+    name: json["name"],
+    logo: json["logo"],
+    bigPic: json["bigPic"],
+    description: json["description"],
+    firstLetter: json["firstLetter"],
+    sort: json["sort"],
+    recommendStatus: json["recommendStatus"],
+    productCount: json["productCount"],
+    productCommentCount: json["productCommentCount"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "firstLetter": firstLetter,
-        "sort": sort,
-        "factoryStatus": factoryStatus,
-        "showStatus": showStatus,
-        "productCount": productCount,
-        "productCommentCount": productCommentCount,
-        "logo": logo,
-        "bigPic": bigPic,
-        "brandStory": brandStory,
-        "productList": List<dynamic>.from(productList!.map((x) => x.toJson())),
-      };
+    "id": id,
+    "name": name,
+    "logo": logo,
+    "bigPic": bigPic,
+    "description": description,
+    "firstLetter": firstLetter,
+    "sort": sort,
+    "recommendStatus": recommendStatus,
+    "productCount": productCount,
+    "productCommentCount": productCommentCount,
+  };
 }
 
-class ProductList {
+class BrandProductData {
   int id;
-  int brandId;
-  int productCategoryId;
-  int feightTemplateId;
-  int productAttributeCategoryId;
   String name;
-  String pic;
   String productSn;
-  int deleteStatus;
+  int categoryId;
+  String categoryIds;
+  String categoryName;
+  int brandId;
+  String brandName;
+  String unit;
+  double weight;
+  String keywords;
+  String albumPics;
+  String mainPic;
+  String price;
+  String priceRange;
   int publishStatus;
   int newStatus;
-  int recommandStatus;
+  int recommendStatus;
   int verifyStatus;
+  int previewStatus;
   int sort;
-  int sale;
-  int price;
-  int giftGrowth;
-  int giftPoint;
-  int usePointLimit;
-  String subTitle;
-  int originalPrice;
+  int newStatusSort;
+  int recommendStatusSort;
+  int sales;
   int stock;
   int lowStock;
-  String unit;
-  int weight;
-  int previewStatus;
-  String serviceIds;
-  String keywords;
-  String note;
-  String albumPics;
-  String detailTitle;
-  String promotionStartTime;
-  String promotionEndTime;
-  int promotionPerLimit;
   int promotionType;
-  String brandName;
-  String productCategoryName;
-  String description;
+  String subTitle;
+  String detailHtml;
+  String detailMobileHtml;
 
-  ProductList({
+  BrandProductData({
     required this.id,
-    required this.brandId,
-    required this.productCategoryId,
-    required this.feightTemplateId,
-    required this.productAttributeCategoryId,
     required this.name,
-    required this.pic,
     required this.productSn,
-    required this.deleteStatus,
-    required this.publishStatus,
-    required this.newStatus,
-    required this.recommandStatus,
-    required this.verifyStatus,
-    required this.sort,
-    required this.sale,
-    required this.price,
-    required this.giftGrowth,
-    required this.giftPoint,
-    required this.usePointLimit,
-    required this.subTitle,
-    required this.originalPrice,
-    required this.stock,
-    required this.lowStock,
+    required this.categoryId,
+    required this.categoryIds,
+    required this.categoryName,
+    required this.brandId,
+    required this.brandName,
     required this.unit,
     required this.weight,
-    required this.previewStatus,
-    required this.serviceIds,
     required this.keywords,
-    required this.note,
     required this.albumPics,
-    required this.detailTitle,
-    required this.promotionStartTime,
-    required this.promotionEndTime,
-    required this.promotionPerLimit,
+    required this.mainPic,
+    required this.price,
+    required this.priceRange,
+    required this.publishStatus,
+    required this.newStatus,
+    required this.recommendStatus,
+    required this.verifyStatus,
+    required this.previewStatus,
+    required this.sort,
+    required this.newStatusSort,
+    required this.recommendStatusSort,
+    required this.sales,
+    required this.stock,
+    required this.lowStock,
     required this.promotionType,
-    required this.brandName,
-    required this.productCategoryName,
-    required this.description,
+    required this.subTitle,
+    required this.detailHtml,
+    required this.detailMobileHtml,
   });
 
-  factory ProductList.fromJson(Map<String, dynamic> json) => ProductList(
-        id: json["id"],
-        brandId: json["brandId"],
-        productCategoryId: json["productCategoryId"],
-        feightTemplateId: json["feightTemplateId"],
-        productAttributeCategoryId: json["productAttributeCategoryId"],
-        name: json["name"],
-        pic: json["pic"],
-        productSn: json["productSn"],
-        deleteStatus: json["deleteStatus"],
-        publishStatus: json["publishStatus"],
-        newStatus: json["newStatus"],
-        recommandStatus: json["recommandStatus"],
-        verifyStatus: json["verifyStatus"],
-        sort: json["sort"],
-        sale: json["sale"],
-        price: json["price"],
-        giftGrowth: json["giftGrowth"],
-        giftPoint: json["giftPoint"],
-        usePointLimit: json["usePointLimit"],
-        subTitle: json["subTitle"],
-        originalPrice: json["originalPrice"],
-        stock: json["stock"],
-        lowStock: json["lowStock"],
-        unit: json["unit"],
-        weight: json["weight"],
-        previewStatus: json["previewStatus"],
-        serviceIds: json["serviceIds"],
-        keywords: json["keywords"],
-        note: json["note"],
-        albumPics: json["albumPics"],
-        detailTitle: json["detailTitle"],
-        promotionStartTime: json["promotionStartTime"],
-        promotionEndTime: json["promotionEndTime"],
-        promotionPerLimit: json["promotionPerLimit"],
-        promotionType: json["promotionType"],
-        brandName: json["brandName"],
-        productCategoryName: json["productCategoryName"],
-        description: json["description"],
-      );
+  factory BrandProductData.fromJson(Map<String, dynamic> json) => BrandProductData(
+    id: json["id"],
+    name: json["name"],
+    productSn: json["productSn"],
+    categoryId: json["categoryId"],
+    categoryIds: json["categoryIds"],
+    categoryName: json["categoryName"],
+    brandId: json["brandId"],
+    brandName: json["brandName"],
+    unit: json["unit"],
+    weight: json["weight"]?.toDouble(),
+    keywords: json["keywords"],
+    albumPics: json["albumPics"],
+    mainPic: json["mainPic"],
+    price: json["price"],
+    priceRange: json["priceRange"],
+    publishStatus: json["publishStatus"],
+    newStatus: json["newStatus"],
+    recommendStatus: json["recommendStatus"],
+    verifyStatus: json["verifyStatus"],
+    previewStatus: json["previewStatus"],
+    sort: json["sort"],
+    newStatusSort: json["newStatusSort"],
+    recommendStatusSort: json["recommendStatusSort"],
+    sales: json["sales"],
+    stock: json["stock"],
+    lowStock: json["lowStock"],
+    promotionType: json["promotionType"],
+    subTitle: json["subTitle"],
+    detailHtml: json["detailHtml"],
+    detailMobileHtml: json["detailMobileHtml"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "brandId": brandId,
-        "productCategoryId": productCategoryId,
-        "feightTemplateId": feightTemplateId,
-        "productAttributeCategoryId": productAttributeCategoryId,
-        "name": name,
-        "pic": pic,
-        "productSn": productSn,
-        "deleteStatus": deleteStatus,
-        "publishStatus": publishStatus,
-        "newStatus": newStatus,
-        "recommandStatus": recommandStatus,
-        "verifyStatus": verifyStatus,
-        "sort": sort,
-        "sale": sale,
-        "price": price,
-        "giftGrowth": giftGrowth,
-        "giftPoint": giftPoint,
-        "usePointLimit": usePointLimit,
-        "subTitle": subTitle,
-        "originalPrice": originalPrice,
-        "stock": stock,
-        "lowStock": lowStock,
-        "unit": unit,
-        "weight": weight,
-        "previewStatus": previewStatus,
-        "serviceIds": serviceIds,
-        "keywords": keywords,
-        "note": note,
-        "albumPics": albumPics,
-        "detailTitle": detailTitle,
-        "promotionStartTime": promotionStartTime,
-        "promotionEndTime": promotionEndTime,
-        "promotionPerLimit": promotionPerLimit,
-        "promotionType": promotionType,
-        "brandName": brandName,
-        "productCategoryName": productCategoryName,
-        "description": description,
-      };
+    "id": id,
+    "name": name,
+    "productSn": productSn,
+    "categoryId": categoryId,
+    "categoryIds": categoryIds,
+    "categoryName": categoryName,
+    "brandId": brandId,
+    "brandName": brandName,
+    "unit": unit,
+    "weight": weight,
+    "keywords": keywords,
+    "albumPics": albumPics,
+    "mainPic": mainPic,
+    "price": price,
+    "priceRange": priceRange,
+    "publishStatus": publishStatus,
+    "newStatus": newStatus,
+    "recommendStatus": recommendStatus,
+    "verifyStatus": verifyStatus,
+    "previewStatus": previewStatus,
+    "sort": sort,
+    "newStatusSort": newStatusSort,
+    "recommendStatusSort": recommendStatusSort,
+    "sales": sales,
+    "stock": stock,
+    "lowStock": lowStock,
+    "promotionType": promotionType,
+    "subTitle": subTitle,
+    "detailHtml": detailHtml,
+    "detailMobileHtml": detailMobileHtml,
+  };
 }

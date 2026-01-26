@@ -6,7 +6,6 @@ import 'package:flutter_mall/utils/http_util.dart';
 import 'package:flutter_mall/widgets/cached_image_widget.dart';
 
 import 'model/brand_detail.dart';
-import 'model/product_list_brand.dart';
 
 ///
 /// 品牌详情页面
@@ -24,8 +23,8 @@ class BrandDetail extends StatefulWidget {
 }
 
 class _BrandDetailState extends State<BrandDetail> {
-  BrandDetailData? brandDetailData;
-  List<ProductList>? productListBrandDataItem = [];
+  BrandData? brandDetailData;
+  List<BrandProductData>? productListBrandDataItem = [];
   // List<ProductList>? productList = [];
 
   @override
@@ -39,8 +38,8 @@ class _BrandDetailState extends State<BrandDetail> {
     Response result = await HttpUtil.get(brandDetailDataUrl + widget.brandId.toString());
     setState(() {
       BrandDetailModel brandDetailModel = BrandDetailModel.fromJson(result.data);
-      brandDetailData = brandDetailModel.data;
-      productListBrandDataItem = brandDetailData!.productList;
+      brandDetailData = brandDetailModel.data.brandData;
+      productListBrandDataItem = brandDetailModel.data.brandProductData;
     });
   }
 
@@ -142,7 +141,7 @@ class _BrandDetailState extends State<BrandDetail> {
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
           padding: const EdgeInsets.all(15),
-          child: Text(brandDetailData!.brandStory,
+          child: Text(brandDetailData!.description,
               style: TextStyle(fontSize: 12, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
         ),
         Container(
@@ -192,7 +191,7 @@ class _BrandDetailState extends State<BrandDetail> {
           CachedImageWidget(
             165,
             165,
-            productListBrandDataItem![index].pic,
+            productListBrandDataItem![index].mainPic,
             fit: BoxFit.contain,
           ),
           const SizedBox(
@@ -216,7 +215,7 @@ class _BrandDetailState extends State<BrandDetail> {
                 child: Text("￥${productListBrandDataItem![index].price}",
                     style: TextStyle(fontSize: 16, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
               ),
-              Text("已售 ${productListBrandDataItem![index].sale}",
+              Text("已售 ${productListBrandDataItem![index].sales}",
                   style: TextStyle(fontSize: 12, color: Color(int.parse('909399', radix: 16)).withAlpha(255))),
             ],
           )
