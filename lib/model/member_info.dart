@@ -20,90 +20,106 @@ class MemberInfoModel {
   });
 
   factory MemberInfoModel.fromJson(Map<String, dynamic> json) => MemberInfoModel(
-        code: json["code"],
-        message: json["message"],
-        data: MemberInfoData.fromJson(json["data"]),
-      );
+    code: json["code"],
+    message: json["message"],
+    data: MemberInfoData.fromJson(json["data"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "code": code,
-        "message": message,
-        "data": data.toJson(),
-      };
+    "code": code,
+    "message": message,
+    "data": data.toJson(),
+  };
 }
 
 class MemberInfoData {
   int id;
-  int memberLevelId;
-  String username;
+  int memberId;
+  int levelId;
   String nickname;
-  String phone;
-  int status;
-  String createTime;
-  String icon;
+  String mobile;
+  int source;
+  String avatar;
+  String signature;
   int gender;
   String birthday;
-  String city;
-  String job;
-  String personalizedSignature;
-  int integration;
-  int growth;
+  int growthPoint;
+  int points;
+  int totalPoints;
+  double spendAmount;
+  int orderCount;
   int couponCount;
+  int commentCount;
+  int returnCount;
+  int lotteryTimes;
+  String lastLogin;
 
   MemberInfoData({
     required this.id,
-    required this.memberLevelId,
-    required this.username,
+    required this.memberId,
+    required this.levelId,
     required this.nickname,
-    required this.phone,
-    required this.status,
-    required this.createTime,
-    required this.icon,
+    required this.mobile,
+    required this.source,
+    required this.avatar,
+    required this.signature,
     required this.gender,
     required this.birthday,
-    required this.city,
-    required this.job,
-    required this.personalizedSignature,
-    required this.integration,
-    required this.growth,
+    required this.growthPoint,
+    required this.points,
+    required this.totalPoints,
+    required this.spendAmount,
+    required this.orderCount,
     required this.couponCount,
+    required this.commentCount,
+    required this.returnCount,
+    required this.lotteryTimes,
+    required this.lastLogin,
   });
 
   factory MemberInfoData.fromJson(Map<String, dynamic> json) => MemberInfoData(
-        id: json["id"],
-        memberLevelId: json["memberLevelId"],
-        username: json["username"],
-        nickname: json["nickname"],
-        phone: json["phone"],
-        status: json["status"],
-        createTime: json["createTime"],
-        icon: json["icon"],
-        gender: json["gender"],
-        birthday: json["birthday"],
-        city: json["city"],
-        job: json["job"],
-        personalizedSignature: json["personalizedSignature"],
-        integration: json["integration"],
-        growth: json["growth"],
-        couponCount: json["couponCount"],
-      );
+    id: json["id"],
+    memberId: json["memberId"],
+    levelId: json["levelId"],
+    nickname: json["nickname"],
+    mobile: json["mobile"],
+    source: json["source"],
+    avatar: json["avatar"],
+    signature: json["signature"],
+    gender: json["gender"],
+    birthday: json["birthday"],
+    growthPoint: json["growthPoint"],
+    points: json["points"],
+    totalPoints: json["totalPoints"],
+    spendAmount: json["spendAmount"]?.toDouble(),
+    orderCount: json["orderCount"],
+    couponCount: json["couponCount"],
+    commentCount: json["commentCount"],
+    returnCount: json["returnCount"],
+    lotteryTimes: json["lotteryTimes"],
+    lastLogin: json["lastLogin"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "memberLevelId": memberLevelId,
-        "username": username,
-        "nickname": nickname,
-        "phone": phone,
-        "status": status,
-        "createTime": createTime,
-        "icon": icon,
-        "gender": gender,
-        "birthday": birthday,
-        "city": city,
-        "job": job,
-        "personalizedSignature": personalizedSignature,
-        "integration": integration,
-        "growth": growth,
-        "couponCount": couponCount,
-      };
+    "id": id,
+    "memberId": memberId,
+    "levelId": levelId,
+    "nickname": nickname,
+    "mobile": mobile,
+    "source": source,
+    "avatar": avatar,
+    "signature": signature,
+    "gender": gender,
+    "birthday": birthday,
+    "growthPoint": growthPoint,
+    "points": points,
+    "totalPoints": totalPoints,
+    "spendAmount": spendAmount,
+    "orderCount": orderCount,
+    "couponCount": couponCount,
+    "commentCount": commentCount,
+    "returnCount": returnCount,
+    "lotteryTimes": lotteryTimes,
+    "lastLogin": lastLogin,
+  };
 }

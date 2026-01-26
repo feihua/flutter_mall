@@ -32,21 +32,27 @@ class _MineState extends State<Mine> {
   // 没登录时的默认数据
   MemberInfoData memberInfoData = MemberInfoData(
       id: 1,
-      memberLevelId: 1,
-      username: "koobe",
-      nickname: "koobe",
-      phone: "18613030352",
-      status: 0,
-      createTime: "createTime",
-      icon: "icon",
-      gender: 0,
-      birthday: "birthday",
-      city: "city",
-      job: "",
-      personalizedSignature: "personalizedSignature",
-      integration: 0,
-      growth: 0,
-      couponCount:0);
+      memberId: 1001,
+      levelId: 1,
+      nickname: "张三",
+      mobile: "13800138001",
+      source: 0,
+      avatar: "https://example.com/avatar/001.jpg",
+      signature: "生活就是购物~",
+      gender: 1,
+      birthday: "1990-01-15",
+      growthPoint: 100,
+      points: 500,
+      totalPoints: 1000,
+      spendAmount: 999.989990234375,
+      orderCount: 10,
+      couponCount: 5,
+      commentCount: 8,
+      returnCount: 1,
+      lotteryTimes: 2,
+      lastLogin: "2024-01-15 08:30:00"
+
+  );
 
   @override
   void initState() {
@@ -117,7 +123,7 @@ class _MineState extends State<Mine> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(memberInfoData.username,
+                      Text(memberInfoData.nickname,
                           style: TextStyle(fontSize: 25, color: Color(int.parse('303133', radix: 16)).withAlpha(255))),
                     ],
                   ),
@@ -184,14 +190,14 @@ class _MineState extends State<Mine> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(memberInfoData.integration.toString(), style: numStyle),
+                      Text(memberInfoData.points.toString(), style: numStyle),
                       Text("积分", style: txtStyle),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(memberInfoData.growth.toString(), style: numStyle),
+                      Text(memberInfoData.growthPoint.toString(), style: numStyle),
                       Text("成长值", style: txtStyle),
                     ],
                   ),
