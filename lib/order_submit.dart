@@ -46,15 +46,17 @@ class _OrderSubmitState extends State<OrderSubmit> {
         titleTextStyle: const TextStyle(fontSize: 16, color: Colors.black),
         centerTitle: true,
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        color: Colors.white,
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [buildOrderDetail(), Positioned(bottom: 0, child: buildSubmit())],
+      body: SafeArea(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          color: Colors.white,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [buildOrderDetail(), Positioned(bottom: 0, child: buildSubmit())],
+          ),
         ),
-      ),
+      )
     );
   }
 
