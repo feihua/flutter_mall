@@ -26,11 +26,11 @@ class _CouponListState extends State<CouponList> {
   @override
   void initState() {
     super.initState();
-    queryCouponList("0");
+    queryCouponList(0);
   }
 
-  void queryCouponList(String status) async {
-    Response result = await HttpUtil.get(couponDataUrl + status);
+  void queryCouponList(int status) async {
+    Response result = await HttpUtil.get(couponDataUrl + status.toString());
     CouponModel couponModel = CouponModel.fromJson(result.data);
     setState(() {
       couponListData = couponModel.data;
@@ -49,6 +49,9 @@ class _CouponListState extends State<CouponList> {
           bottom: TabBar(
             indicatorColor: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
             labelColor: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+            onTap: (index) {
+              queryCouponList(index);
+            },
             tabs: couponStatus.map((status) => Tab(text: status)).toList(),
           ),
         ),

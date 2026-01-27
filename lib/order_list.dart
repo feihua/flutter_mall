@@ -28,12 +28,11 @@ class _OrderListState extends State<OrderList> {
   @override
   void initState() {
     super.initState();
-    _queryOrderListData();
+    _queryOrderListData(0);
   }
 
-  void _queryOrderListData() async {
-    // todo 订单状态待完善
-    Response result = await HttpUtil.get("${orderListDataUrl}1");
+  void _queryOrderListData(int status) async {
+    Response result = await HttpUtil.get("$orderListDataUrl$status");
     setState(() {
       OrderListModel orderListModel = OrderListModel.fromJson(result.data);
       orderListData = orderListModel.data;
@@ -54,17 +53,20 @@ class _OrderListState extends State<OrderList> {
               int.parse('fa436a', radix: 16),
             ).withAlpha(255),
             labelColor: Color(int.parse('fa436a', radix: 16)).withAlpha(255),
+            onTap: (index) {
+              int status = index;
+              if (index >= 3) {
+                status = status + 1;
+              }
+              _queryOrderListData(status);
+            },
             tabs: orderStatus.map((status) => Tab(text: status)).toList(),
           ),
         ),
         body: TabBarView(
-          children:
-              orderStatus.map((status) {
-                return OrderListInfo(
-                  status: status,
-                  orderListData: orderListData,
-                );
-              }).toList(),
+          children: orderStatus.map((status) {
+            return OrderListInfo(status: status, orderListData: orderListData);
+          }).toList(),
         ),
       ),
     );
@@ -95,8 +97,8 @@ class OrderListInfo extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder:
-                    (context) => OrderDetail(orderId: orderListData[index].id),
+                builder: (context) =>
+                    OrderDetail(orderId: orderListData[index].id),
               ),
             );
           },
@@ -265,29 +267,52 @@ class OrderListInfo extends StatelessWidget {
   // 构建商品列表
   Column buildProductList(int index) {
     return Column(
-      children:
-          orderListData[index].orderItemData.map((item) {
-            return Container(
-              padding: const EdgeInsets.only(right: 15, top: 15),
-              // decoration: boxDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CachedImageWidget(
-                    60,
-                    60,
-                    item.skuPic,
-                    fit: BoxFit.contain,
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      children: orderListData[index].orderItemData.map((item) {
+        return Container(
+          padding: const EdgeInsets.only(right: 15, top: 15),
+          // decoration: boxDecoration,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CachedImageWidget(60, 60, item.skuPic, fit: BoxFit.contain),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.skuName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Color(
+                          int.parse('303133', radix: 16),
+                        ).withAlpha(255),
+                      ),
+                    ),
+                    Text(
+                      "颜色:黑色;容量:128G; x 1",
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Color(
+                          int.parse('707070', radix: 16),
+                        ).withAlpha(255),
+                      ),
+                    ),
+                    Row(
                       children: [
                         Text(
-                          item.skuName,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                          "￥",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(
+                              int.parse('707070', radix: 16),
+                            ).withAlpha(255),
+                          ),
+                        ),
+                        Text(
+                          item.skuPrice.toString(),
                           style: TextStyle(
                             fontSize: 15,
                             color: Color(
@@ -295,44 +320,15 @@ class OrderListInfo extends StatelessWidget {
                             ).withAlpha(255),
                           ),
                         ),
-                        Text(
-                          "颜色:黑色;容量:128G; x 1",
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Color(
-                              int.parse('707070', radix: 16),
-                            ).withAlpha(255),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "￥",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Color(
-                                  int.parse('707070', radix: 16),
-                                ).withAlpha(255),
-                              ),
-                            ),
-                            Text(
-                              item.skuPrice.toString(),
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Color(
-                                  int.parse('303133', radix: 16),
-                                ).withAlpha(255),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            );
-          }).toList(),
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 

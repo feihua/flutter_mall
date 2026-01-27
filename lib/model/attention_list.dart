@@ -37,7 +37,7 @@ class AttentionListModel {
 }
 
 class AttentionListData {
-  int id;
+  String id;
   int memberId;
   String memberNickName;
   String memberIcon;

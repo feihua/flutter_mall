@@ -33,7 +33,7 @@ class HistoryListModel {
 }
 
 class HistoryListDataItem {
-  int id;
+  String id;
   int memberId;
   String memberNickName;
   String memberIcon;

@@ -77,7 +77,7 @@ class _FocusOnState extends State<FocusOn> {
           // 点击时导航到品牌详情页面
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => BrandDetail(brandId: item.id),
+              builder: (context) => BrandDetail(brandId: item.brandId),
             ),
           );
         },

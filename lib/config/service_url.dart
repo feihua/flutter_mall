@@ -6,8 +6,8 @@
 ///
 ///
 
-const baseUrl = "http://10.168.96.23:9999";
-// const baseUrl = "http://129.204.203.29/app";
+// const baseUrl = "http://10.168.96.23:9999";
+const baseUrl = "http://129.204.203.29/app";
 // 首页
 const homeDataUrl = "$baseUrl/api/home/index";
 // 品牌列表
