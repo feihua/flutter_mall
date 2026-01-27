@@ -20,86 +20,74 @@ class CouponModel {
   });
 
   factory CouponModel.fromJson(Map<String, dynamic> json) => CouponModel(
-        code: json["code"],
-        message: json["message"],
-        data: List<CouponData>.from(json["data"].map((x) => CouponData.fromJson(x))),
-      );
+    code: json["code"],
+    message: json["message"],
+    data: List<CouponData>.from(json["data"].map((x) => CouponData.fromJson(x))),
+  );
 
   Map<String, dynamic> toJson() => {
-        "code": code,
-        "message": message,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
-      };
+    "code": code,
+    "message": message,
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  };
 }
 
 class CouponData {
   int id;
-  int type;
+  int typeId;
   String name;
-  int platform;
-  int count;
+  String code;
   int amount;
-  int perLimit;
-  int minPoint;
+  int minAmount;
   String startTime;
   String endTime;
-  int useType;
-  int publishCount;
-  int useCount;
-  int receiveCount;
-  String enableTime;
+  int perLimit;
+  int status;
+  String description;
+  int scopeType;
 
   CouponData({
     required this.id,
-    required this.type,
+    required this.typeId,
     required this.name,
-    required this.platform,
-    required this.count,
+    required this.code,
     required this.amount,
-    required this.perLimit,
-    required this.minPoint,
+    required this.minAmount,
     required this.startTime,
     required this.endTime,
-    required this.useType,
-    required this.publishCount,
-    required this.useCount,
-    required this.receiveCount,
-    required this.enableTime,
+    required this.perLimit,
+    required this.status,
+    required this.description,
+    required this.scopeType,
   });
 
   factory CouponData.fromJson(Map<String, dynamic> json) => CouponData(
-        id: json["id"],
-        type: json["type"],
-        name: json["name"],
-        platform: json["platform"],
-        count: json["count"],
-        amount: json["amount"],
-        perLimit: json["perLimit"],
-        minPoint: json["minPoint"],
-        startTime: json["startTime"],
-        endTime: json["endTime"],
-        useType: json["useType"],
-        publishCount: json["publishCount"],
-        useCount: json["useCount"],
-        receiveCount: json["receiveCount"],
-        enableTime: json["enableTime"],
-      );
+    id: json["id"],
+    typeId: json["typeId"],
+    name: json["name"],
+    code: json["code"],
+    amount: json["amount"],
+    minAmount: json["minAmount"],
+    startTime: json["startTime"],
+    endTime: json["endTime"],
+    perLimit: json["perLimit"],
+    status: json["status"],
+    description: json["description"],
+    scopeType: json["scopeType"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "type": type,
-        "name": name,
-        "platform": platform,
-        "count": count,
-        "amount": amount,
-        "perLimit": perLimit,
-        "minPoint": minPoint,
-        "startTime": startTime,
-        "endTime": endTime,
-        "useType": useType,
-        "publishCount": publishCount,
-        "useCount": useCount,
-        "receiveCount": receiveCount,
-        "enableTime": enableTime,
-      };
+    "id": id,
+    "typeId": typeId,
+    "name": name,
+    "code": code,
+    "amount": amount,
+    "minAmount": minAmount,
+    "startTime": startTime,
+    "endTime": endTime,
+    "perLimit": perLimit,
+    "status": status,
+    "description": description,
+    "scopeType": scopeType,
+  };
 }

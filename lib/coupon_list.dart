@@ -120,7 +120,7 @@ class CouponListInfo extends StatelessWidget {
                                       fontSize: 22, color: Color(int.parse('fa436a', radix: 16)).withAlpha(255))),
                             ],
                           ),
-                          Text("满${couponData.minPoint}可用",
+                          Text("满${couponData.minAmount}可用",
                               style:
                                   TextStyle(fontSize: 13, color: Color(int.parse('707070', radix: 16)).withAlpha(255))),
                         ],
@@ -139,7 +139,7 @@ class CouponListInfo extends StatelessWidget {
 
   // 优惠券类型：0：全场通用，1：指定分类商品可用，2：指定商品可用
   String getUseType(int index) {
-    int cType = couponListData[index].useType;
+    int cType = couponListData[index].scopeType;
     if (cType == 0) {
       return "全场通用";
     }
