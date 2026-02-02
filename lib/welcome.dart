@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/login.dart';
+import 'package:flutter_mall/view/mine/login/login.dart';
 
-import 'main_tab.dart';
+import 'layout/main_tab.dart';
+
 
 ///
 /// 欢迎页面(启动页)

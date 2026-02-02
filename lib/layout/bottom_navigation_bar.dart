@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/cart.dart';
-import 'package:flutter_mall/categories.dart';
-import 'package:flutter_mall/home.dart';
-import 'package:flutter_mall/mine.dart';
+import 'package:flutter_mall/view/cart/cart.dart';
+import 'package:flutter_mall/view/category/categories.dart';
+import 'package:flutter_mall/view/home/home_page.dart';
+import 'package:flutter_mall/view/mine/mine.dart';
 
 ///
 /// 底部导航页-切换页面
@@ -11,7 +11,7 @@ import 'package:flutter_mall/mine.dart';
 /// 日期：2023/11/21 17:17
 ///
 final pages = [
-  const Home(), //首页
+  const HomePage(), //首页
   const Categories(), //分类
   const Cart(), //购物车
   const Mine() //个人主页

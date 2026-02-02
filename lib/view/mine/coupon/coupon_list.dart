@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mall/config/service_url.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 
-import 'model/coupon_model.dart';
+import '../../../model/coupon_model.dart';
 
 ///
 /// 优惠券列表页面

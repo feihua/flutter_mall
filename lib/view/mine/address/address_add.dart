@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/address_list.dart';
+
+import 'address_list.dart';
 
 ///
 /// 添加收货地址页面

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/mine.dart';
-import 'package:flutter_mall/welcome.dart';
 
 ///
 /// 设置页面

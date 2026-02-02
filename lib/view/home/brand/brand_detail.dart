@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mall/config/service_url.dart';
-import 'package:flutter_mall/product_detail.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 import 'package:flutter_mall/widgets/cached_image_widget.dart';
 
-import 'model/brand_detail.dart';
+import '../../../model/brand_detail.dart';
+import '../../category/product/product_detail.dart';
 
 ///
 /// 品牌详情页面

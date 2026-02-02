@@ -1,19 +1,19 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/address_list.dart';
-import 'package:flutter_mall/collection.dart';
-import 'package:flutter_mall/coupon_list.dart';
-import 'package:flutter_mall/focus.dart';
-import 'package:flutter_mall/history.dart';
-import 'package:flutter_mall/login.dart';
-import 'package:flutter_mall/message.dart';
-import 'package:flutter_mall/order_list.dart';
-import 'package:flutter_mall/ping_jia.dart';
-import 'package:flutter_mall/settings.dart';
+import 'package:flutter_mall/view/mine/collection/collection.dart';
+import 'package:flutter_mall/view/mine/coupon/coupon_list.dart';
+import 'package:flutter_mall/view/mine/focus/focus.dart';
+import 'package:flutter_mall/view/mine/history/history.dart';
+import 'package:flutter_mall/view/mine/login/login.dart';
+import 'package:flutter_mall/view/mine/message/message.dart';
+import 'package:flutter_mall/view/mine/order/order_list.dart';
+import 'package:flutter_mall/view/mine/ping_jia/ping_jia.dart';
+import 'package:flutter_mall/view/mine/setting/settings.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 
-import 'config/service_url.dart';
-import 'model/member_info.dart';
+import '../../config/service_url.dart';
+import '../../model/member_info.dart';
+import 'address/address_list.dart';
 
 ///
 /// 我的页面

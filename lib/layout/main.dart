@@ -5,7 +5,7 @@ import 'package:flutter_mall/utils/shared_preferences_util.dart';
 import 'package:flutter_mall/welcome.dart';
 import 'package:provider/provider.dart';
 
-import 'config/nav_key.dart';
+import '../config/nav_key.dart';
 
 ///
 /// 应用入口页面

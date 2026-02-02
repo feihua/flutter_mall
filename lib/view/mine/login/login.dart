@@ -4,8 +4,8 @@ import 'package:flutter_mall/config/service_url.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 import 'package:flutter_mall/utils/shared_preferences_util.dart';
 
-import 'config/constant_param.dart';
-import 'model/login_model.dart';
+import '../../../config/constant_param.dart';
+import '../../../model/login_model.dart';
 
 ///
 /// 登录页面

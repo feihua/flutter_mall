@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mall/config/service_url.dart';
-import 'package:flutter_mall/product_list.dart';
+import 'package:flutter_mall/view/category/product/product_list.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 import 'package:flutter_mall/widgets/cached_image_widget.dart';
 
-import 'model/categories_model.dart';
+import '../../model/categories_model.dart';
 
 ///
 /// 商品分类页面

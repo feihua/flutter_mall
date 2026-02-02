@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/brand_detail.dart';
+import 'package:flutter_mall/view/home/brand/brand_detail.dart';
 import 'package:flutter_mall/config/service_url.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 import 'package:flutter_mall/widgets/cached_image_widget.dart';
 
-import 'model/attention_list.dart';
+import '../../../model/attention_list.dart';
 
 ///
 /// 我的关注页面

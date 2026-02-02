@@ -5,8 +5,8 @@ import 'package:flutter_mall/provider/cart_model.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 import 'package:provider/provider.dart';
 
-import 'model/cart_list.dart';
-import 'order_submit.dart';
+import '../../model/cart_list.dart';
+import '../mine/order/order_submit.dart';
 
 ///
 /// 购物车页面

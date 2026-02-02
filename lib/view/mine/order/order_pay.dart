@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/order_submit.dart';
-import 'package:flutter_mall/pay_test.dart';
+import 'package:flutter_mall/view/mine/order/pay_test.dart';
 
-import 'order_list.dart';
 
 ///
 /// 订单支付页面

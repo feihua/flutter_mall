@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mall/address_add.dart';
+import 'package:flutter_mall/view/mine/address/address_add.dart';
 import 'package:flutter_mall/config/service_url.dart';
 import 'package:flutter_mall/utils/http_util.dart';
 
-import 'model/address_list.dart';
+import '../../../model/address_list.dart';
+
 
 ///
 /// 收货地址列表页面
