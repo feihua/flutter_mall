@@ -47,7 +47,7 @@
    git clone https://github.com/feihua/flutter_mall.git
    cd flutter-mall
    flutter pub get
-   flutter run -t lib/layout/main.dart
+   flutter run
 
 ## 体验地址
 **android** 版本体验地址[flutter-mall-app](https://www.pgyer.com/OoW2Zy)
