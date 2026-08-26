@@ -1,9 +1,8 @@
-# getx状态管理版本将会在知识星球更新 🎉🎉🎉
-
 # Flutter Mall 移动端电商系统
 
 **Flutter Mall** 是一个基于 **Flutter** 框架实现的电商系统移动端项目，旨在提供全面的购物体验。主要功能包括首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等。
 
+![abc](./document/images/app-ui.png)
 ## 功能模块
 
 1. **首页门户**: 提供用户访问应用的入口，展示热门商品、优惠信息等。
@@ -37,7 +36,7 @@
 - **Flutter Router**: 实现应用内的导航和路由管理。
 
 # 文档地址
-[https://feihua.github.io/](https://feihua.github.io/) 正在完善
+[https://feihua.github.io/](https://feihua.github.io/)
 
 
 ## 快速开始
@@ -51,62 +50,6 @@
 
 ## 体验地址
 **android** 版本体验地址[flutter-mall-app](https://www.pgyer.com/OoW2Zy)
-
-# 在p40下演示的截图
-
-## 首页
-
-![首页](./document/images/home.jpg)
-![首页](./document/images/home1.jpg)
-
-## 分类
-
-![分类](./document/images/category.jpg)
-
-## 购物车
-
-![购物车](./document/images/cart.jpg)
-
-## 确认订单
-
-![确认订单](./document/images/comfi_order.jpg)
-
-## 支付
-
-![支付](./document/images/pay.jpg)
-
-## 订单
-
-![订单](./document/images/order.jpg)
-
-## 我的
-
-![我的](./document/images/mine.jpg)
-
-## 登录
-
-![登录](./document/images/login.jpg)
-
-## 地址
-
-![地址](./document/images/address.jpg)
-
-## 品牌
-
-![品牌](./document/images/brand_list.jpg)
-![品牌](./document/images/brand_detail.jpg)
-
-## 商品详情
-
-![商品详情](./document/images/product_detail.jpg)
-
-## 优惠券
-
-![优惠券](./document/images/coupnon.jpg)
-
-## 设置
-
-![设置](./document/images/setting.jpg)
 
 # 贡献
 欢迎提出问题、建议和贡献代码，一起改进 Flutter Mall 移动端电商系统，为用户提供更好的购物体验。
