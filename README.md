@@ -49,7 +49,7 @@
    flutter run
 
 ## 体验地址
-**android** 版本体验地址[flutter-mall-app](https://www.pgyer.com/OoW2Zy)
+**android** 版本体验地址[flutter-mall-app](https://www.pgyer.com/fluttermall)
 
 # 贡献
 欢迎提出问题、建议和贡献代码，一起改进 Flutter Mall 移动端电商系统，为用户提供更好的购物体验。
